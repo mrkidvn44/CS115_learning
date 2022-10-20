@@ -6,6 +6,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn import tree
 
+
 def sigmoid(x):
     return round(1/(1 + np.exp(-x)), 6)
 
@@ -44,7 +45,6 @@ def evaluate(p, y):
     return round((tp + tn)/(tn+tp+fn+fp), 4), tp, tn, fp, fn
 
 
-
 path = "./heart.csv"
 file = pd.read_csv(path)
 y = file.pop('target')
@@ -54,12 +54,12 @@ Y_train = Y_train.to_numpy()
 Y_val = Y_val.to_numpy()
 X_train = X_train.to_numpy()
 X_val = X_val.to_numpy()
-model_1= tree.DecisionTreeClassifier(max_depth=5, criterion='entropy')
-model_1= model_1.fit(X_train, Y_train)
-p_1= model_1.predict(X_val)
-model= tree.DecisionTreeClassifier(max_depth=5, criterion='gini')
-model= model.fit(X_train, Y_train)
-p= model.predict(X_val)
+model_1 = tree.DecisionTreeClassifier(max_depth=5, criterion='entropy')
+model_1 = model_1.fit(X_train, Y_train)
+p_1 = model_1.predict(X_val)
+model = tree.DecisionTreeClassifier(max_depth=5, criterion='gini')
+model = model.fit(X_train, Y_train)
+p = model.predict(X_val)
 name = name.to_numpy()
 print(name)
 print(evaluate(p, Y_val))
